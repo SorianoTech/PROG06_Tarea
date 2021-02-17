@@ -10,7 +10,17 @@ https://stackoverflow.com/questions/7906301/how-can-i-find-the-number-of-years-b
 ## Posibles mejoras
  - 1. Cambiar los datos de la fecha a int
  - 2. Validar los tipos datos de entrada de cada una de las opciones.
+##
 
+Mejoras para Unidadad 6
+#001 - Cambiar el metodo getAnios() a la clase Vehiculo.
+#002 - Verificar las validades (todas) en el clase metodos del paquete util
+#003 - Implementar clase Concesionario. max 50 Vehiculos.
+#004 - Modificar menu para los requisitos nuevos.
+#005 - Extraer método mostrarMenu() en la clase metodos.
+#006 - Validar mediante exp. reg el DNI y la mátricula.
+#007 - Validar mediante clase string el nombre y dos apellidos, max 40 char
+#008 - Verificar que la metricula introducida no existe, mensaje y mostrar menu de nuevo.
  */
 package prog05_ejerc1;
 
@@ -138,7 +148,7 @@ public class Principal {
                         break;
                     case 5: //ver años antiguedad
                         if (fecha != "") {//Comprueba si hay una fecha asignada
-                            System.out.println("El coche tiene "+ Metodos.getAnios(fecha)+ " Años");
+                            System.out.println("El coche tiene "+ Vehiculo.getAnios(fecha)+ " Años");
                         } else {//Delve un mensaje de error
                             System.out.println("!!!!!!!!!!Primero debes crear un Vehiculo");
                         }

@@ -16,20 +16,4 @@ import java.util.Date;
  */
 public class Metodos {//Clase publica para poder acceder dese otro paquete
 
-    //atributos de clase
-    //metodo estatico getAnios()
-    /**
-     *
-     * @param dateMatricula Recibe la fecha de matriculacion en formato String
-     * @return anosFinal valor de años de matriculacion
-     */
-    public static int getAnios(String dateMatricula) {
-        int anosFinal = 0;
-        LocalDate startDate = LocalDate.now(); //Contiene la fecha actual
-        LocalDate endDate = LocalDate.parse(dateMatricula);
-        Period anos = Period.between(endDate, startDate); //calclo de la fecha utilizando la clase Period
-        anosFinal = anos.getYears(); //asignamos a la variable con el metodo getYears
-        return anosFinal;//devolvemos la variable.
-    }
-
 }
