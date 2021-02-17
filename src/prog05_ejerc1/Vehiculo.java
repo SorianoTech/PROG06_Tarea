@@ -13,8 +13,6 @@ import java.time.Period;
  */
 public class Vehiculo {
 
-    
-    
     //metodo estatico getAnios()
     /**
      *
