@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package prog05_ejerc1_util;
+package prog06_ejerc1_util;
 
 import java.time.*;
 import java.util.Date;

@@ -1,5 +1,5 @@
 
-package prog05_ejerc1;
+package prog06_ejerc1;
 
 import java.time.LocalDate;
 import java.time.Period;

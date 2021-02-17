@@ -13,19 +13,19 @@ https://stackoverflow.com/questions/7906301/how-can-i-find-the-number-of-years-b
 ##
 
 Mejoras para Unidadad 6
-#001 - Cambiar el metodo getAnios() a la clase Vehiculo. 
-#002 - Verificar las validaciones (todas) en el clase métodos del paquete util.
-#003 - Implementar clase Concesionario. max 50 Vehiculos. Y sus métodos
-#004 - Modificar menú para los requisitos nuevos.
+#001 - Cambiar el metodo getAnios() a la clase Vehiculo.
+#002 - Verificar las validades (todas) en el clase metodos del paquete util
+#003 - Implementar clase Concesionario. max 50 Vehiculos.
+#004 - Modificar menu para los requisitos nuevos.
 #005 - Extraer método mostrarMenu() en la clase metodos.
-#006 - Validar mediante exp. reg el DNI y la matrícula.
+#006 - Validar mediante exp. reg el DNI y la mátricula.
 #007 - Validar mediante clase string el nombre y dos apellidos, max 40 char
-#008 - Verificar que la matrícula introducida no existe, mensaje y mostrar menu de nuevo
+#008 - Verificar que la metricula introducida no existe, mensaje y mostrar menu de nuevo.
  */
-package prog05_ejerc1;
+package prog06_ejerc1;
 
+import prog06_ejerc1_util.DNI;
 import java.util.Scanner;
-import prog05_ejerc1_util.*; //importamos el paquere de utilidades
 
 /**
  * Esta es la clase principal. Consiste en una aplicación para mostrar
@@ -59,18 +59,14 @@ public class Principal {
         
                 
             
-        do {//Muestra el menu mientras que opcion no sea igual a 9
+        do {//Muestra el menu mientras que opcion no sea igual a 5
 
             System.out.println("Bienvenido, selecciona una opcion del 1 al 9.");
             System.out.println("1. Nuevo Vehiculo");
-            System.out.println("2. Ver Matricula");
-            System.out.println("3. Ver número de Kilómetros");
-            System.out.println("4. Actualizar KM");
-            System.out.println("5. Ver años de antigüedad");
-            System.out.println("6. Mostrar propietario");
-            System.out.println("7. Mostrar descripcion");
-            System.out.println("8. Mostrar precio");
-            System.out.println("9. Salir");
+            System.out.println("2. Listar Vehiculos");
+            System.out.println("3. Buscar Vehiculo");
+            System.out.println("4. Modificar Kms de vehiculo");
+            System.out.println("5. Salir");
 
             opcion = teclado.nextInt();
             teclado.nextLine(); //Pedimos la opcion por teclado
@@ -105,7 +101,7 @@ public class Principal {
                             DeNI = teclado.nextLine();
                             if (!DNI.validarNIF(DeNI)) {
                                 System.out.println("DNI Invalido, introduce uno valido");
-                            };
+                            }
                         } while (!DNI.validarNIF(DeNI));
                         //Fin pedir valores por pantalla
                         
@@ -118,23 +114,17 @@ public class Principal {
                         if (mesNumero < 10) {
                             mes = "0" + mes;
                         }
-
                         fecha = ano + "-" + mes + "-" + dia;//metemos los valores en una variable para pasarsela al metodo getAnios
-
                         //Código para crear el vehículo
-                        
                         mi_coche = new Vehiculo(marca, matricula, num_km, dia, mes, ano, descripcion, precio, nombre_propietario, DeNI);
-                        
-                        
-                        
                         break;
-                    case 2: //llamamos al metodo para obtener la matricula
+                    case 2: //Opcion para mostrar todos los vehiculos
                         System.out.println(mi_coche.getMatricula());
                         break;
-                    case 3: //Ver Num_km
+                    case 3: //Opcion para buscar vehiculo
                         System.out.println(mi_coche.getNum_km());
                         break;
-                    case 4:
+                    case 4: //Opción para modificar los KM de un vehiculo.
                         //Actualizar KM
                         if (num_km != 0) {
                             System.out.println("¿Cuántos Kilometros quieres añaidr?");
@@ -146,22 +136,7 @@ public class Principal {
                             System.out.println("!!!!!!!!!!Primero debes crear un Vehiculo");
                         }
                         break;
-                    case 5: //ver años antiguedad
-                        if (fecha != "") {//Comprueba si hay una fecha asignada
-                            System.out.println("El coche tiene "+ Vehiculo.getAnios(fecha)+ " Años");
-                        } else {//Delve un mensaje de error
-                            System.out.println("!!!!!!!!!!Primero debes crear un Vehiculo");
-                        }
-                        break;
-                    case 6: // Mostrar propietario
-                        System.out.println(mi_coche.getNombre_propietario());
-                        break;
-                    case 7: //Mostrar descripcion
-                        System.out.println(mi_coche.getDescripcion());
-                        break;
-                    case 8:
-                        System.out.println(mi_coche.getPrecio());
-                        break;
+                    
                 }
             } catch (NullPointerException e) {//Captura si no se ha creado el objeto 
                 //mensaje de error para indicar que no existen vehículos creados
@@ -169,7 +144,7 @@ public class Principal {
                 System.out.println("Presiona intro para volver al menu.................");
                 teclado.nextLine();
             }
-        } while (opcion != 9);
+        } while (opcion != 5);
     }
 
 }

@@ -1,4 +1,4 @@
-package prog05_ejerc1_util;
+package prog06_ejerc1_util;
 
 /**
  * Clase para validad y obtener DNI
