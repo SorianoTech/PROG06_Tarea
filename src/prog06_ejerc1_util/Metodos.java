@@ -15,5 +15,18 @@ import java.util.Date;
  * @author Sergio Soriano
  */
 public class Metodos {//Clase publica para poder acceder dese otro paquete
+    /**
+     * Muestra el menu con las opciones disponibles
+     * 
+     */
+    public static void mostrarMenu() {
+        //Muestra el menu 
+        System.out.println("Bienvenido, selecciona una opcion del 1 al 9.");
+        System.out.println("1. Nuevo Vehiculo");
+        System.out.println("2. Listar Vehiculos");
+        System.out.println("3. Buscar Vehiculo");
+        System.out.println("4. Modificar Kms de vehiculo");
+        System.out.println("5. Salir");
+    }
 
 }

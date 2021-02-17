@@ -26,6 +26,7 @@ package prog06_ejerc1;
 
 import prog06_ejerc1_util.DNI;
 import java.util.Scanner;
+import prog06_ejerc1_util.Metodos;
 
 /**
  * Esta es la clase principal. Consiste en una aplicación para mostrar
@@ -59,14 +60,8 @@ public class Principal {
         
                 
             
-        do {//Muestra el menu mientras que opcion no sea igual a 5
-
-            System.out.println("Bienvenido, selecciona una opcion del 1 al 9.");
-            System.out.println("1. Nuevo Vehiculo");
-            System.out.println("2. Listar Vehiculos");
-            System.out.println("3. Buscar Vehiculo");
-            System.out.println("4. Modificar Kms de vehiculo");
-            System.out.println("5. Salir");
+        do {
+            Metodos.mostrarMenu(); //Extraemos el menu a un metodo
 
             opcion = teclado.nextInt();
             teclado.nextLine(); //Pedimos la opcion por teclado
@@ -146,5 +141,6 @@ public class Principal {
             }
         } while (opcion != 5);
     }
+
 
 }
