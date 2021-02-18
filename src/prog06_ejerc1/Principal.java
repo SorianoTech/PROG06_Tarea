@@ -1,11 +1,8 @@
 
 /*
+En esta clase solo se debe utilizar la clase Concesionario
 Referencias utilizadas
-# Como crear un objeto en un swith case.
-https://stackoverflow.com/questions/30448705/java-trying-to-create-an-object-using-switch-statement-with-different-parameters
 
-#Sacar los años entre dos fechas
-https://stackoverflow.com/questions/7906301/how-can-i-find-the-number-of-years-between-two-dates
 
 ## Posibles mejoras
  - 1. Cambiar los datos de la fecha a int
@@ -14,13 +11,17 @@ https://stackoverflow.com/questions/7906301/how-can-i-find-the-number-of-years-b
 
 Mejoras para Unidadad 6
 #001 - Cambiar el metodo getAnios() a la clase Vehiculo.
-#002 - Verificar las validades (todas) en el clase metodos del paquete util
+#002 - Verificar las validades (todas) en la clase metodos del paquete util
 #003 - Implementar clase Concesionario. max 50 Vehiculos.
 #004 - Modificar menu para los requisitos nuevos.
 #005 - Extraer método mostrarMenu() en la clase metodos.
-#006 - Validar mediante exp. reg el DNI y la mátricula.
+#006 - Validar mediante exp. reg el DNI y la matrícula. Tan solo el formato
 #007 - Validar mediante clase string el nombre y dos apellidos, max 40 char
-#008 - Verificar que la metricula introducida no existe, mensaje y mostrar menu de nuevo.
+#008 - Verificar que la matrícula introducida no existe, mensaje y mostrar menu de nuevo.
+#009 - Añadir logica para insertarVehiculos() al concesionario
+#010 - Añadir lógica para buscarVehiculo()
+#011 - Añadir lógica para listarVehiculos()
+#012 - Añadir lógica para actualizarKms()
  */
 package prog06_ejerc1;
 
@@ -28,10 +29,15 @@ import prog06_ejerc1_util.DNI;
 import java.util.Scanner;
 import prog06_ejerc1_util.Metodos;
 
+
 /**
- * Esta es la clase principal. Consiste en una aplicación para mostrar
- * informaciñon sobre vehiculos. Muestra un menu para añadir y modificar
- * información sobre los vehiculos.
+ * Esta es la clase principal. Consiste en una aplicación para crear un concesionaro de vehiclos. 
+ * Muestra un menu para añadir, modificar y buscar los vehiculos.
+ * En esta clase se debe implementar :
+ *  - Instanciar un objeto Concesionario.
+ *  - Pintar el menú y solicitar datos por teclado al usuario.
+ *  - Realizar las validaciones de datos de entrada.
+ *  - Mostrar datos por pantalla
  *
  * @author Sergio Soriano
  *
@@ -55,10 +61,10 @@ public class Principal {
         String nombre_propietario;
         int opcion;
         Scanner teclado = new Scanner(System.in);
-        Vehiculo mi_coche = null; //Inicializamos mi_coche a null;
+        Concesionario mi_coche = null; //Inicializamos mi_coche a null;
         String fecha = ""; //para almacenar la fecha en un string
         
-                
+           
             
         do {
             Metodos.mostrarMenu(); //Extraemos el menu a un metodo
@@ -111,13 +117,13 @@ public class Principal {
                         }
                         fecha = ano + "-" + mes + "-" + dia;//metemos los valores en una variable para pasarsela al metodo getAnios
                         //Código para crear el vehículo
-                        mi_coche = new Vehiculo(marca, matricula, num_km, dia, mes, ano, descripcion, precio, nombre_propietario, DeNI);
+                        //mi_coche = new insertarVehiculo(marca, matricula, num_km, dia, mes, ano, descripcion, precio, nombre_propietario, DeNI);
                         break;
                     case 2: //Opcion para mostrar todos los vehiculos
-                        System.out.println(mi_coche.getMatricula());
+                        //mi_coche.listarVehiculos();
                         break;
                     case 3: //Opcion para buscar vehiculo
-                        System.out.println(mi_coche.getNum_km());
+                        //mi_coche.buscarVehiculo(matricula);
                         break;
                     case 4: //Opción para modificar los KM de un vehiculo.
                         //Actualizar KM
@@ -125,8 +131,8 @@ public class Principal {
                             System.out.println("¿Cuántos Kilometros quieres añaidr?");
                             mas_km = teclado.nextInt();
                             teclado.nextLine();
-                            mi_coche.setNum_km(mas_km);
-                            System.out.println("El coche ahora tiene " + mi_coche.getNum_km());
+                            //mi_coche.setNum_km(mas_km);
+                            //System.out.println("El coche ahora tiene " + mi_coche.getNum_km());
                         } else {
                             System.out.println("!!!!!!!!!!Primero debes crear un Vehiculo");
                         }

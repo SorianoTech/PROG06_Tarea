@@ -11,10 +11,13 @@ package prog06_ejerc1;
  */
 public class Concesionario {
 
+   
+
     //Definicion de atributos de la clase
+    static final int MAXVEHICULOS = 50;
     String estaVehiculo; //variable para devolver el vehiculo encontrado
     boolean kmActualizados; // variable para saber si se han actualizado los km
-    int contVehiculos = 0; //variable para conocer el numero de vehiculos en el concesionario
+    private int contVehiculos = 0; //variable para conocer el numero de vehiculos en el concesionario
 
     /**
      * Metodo para buscar un vehiculo Recibe como parámetro una matrícula,
@@ -37,7 +40,8 @@ public class Concesionario {
      * @return estado Devuelve 0 si se hizo con éxito, -1 si el concesionario
      * esta lleno y -2 si la matrícula ya existe.
      */
-    public int insertarVehiculo() {
+    public int insertarVehiculo(String marca, String matricula, int num_km, String dia, String mes, String ano, String descripcion, double precio, String nombre_propietario, String DeNI) {
+
         //logica para insertar el vehiculo o mostrar devolver error que luego podemos capturar
         int estado = 0;
         return estado;
@@ -56,13 +60,29 @@ public class Concesionario {
      * kilómetros, busca el vehículo con la cuya matrícula coincida y actualiza
      * sus kilómetros. Devuelve true si se hizo con éxito y false en caso
      * contrario.
-     * @param matricula 
+     *
+     * @param matricula
      * @param kilometros
-     * @return devuelve true si se han actualizado o false si ha habido algún problema
+     * @return devuelve true si se han actualizado o false si ha habido algún
+     * problema
      *
      */
     public boolean actualizarKms(String matricula, int kilometros) {
         //Logica del metodo
         return kmActualizados;
+    }
+    
+     /**
+     * @return the contVehiculos
+     */
+    protected int getContVehiculos() {
+        return contVehiculos;
+    }
+
+    /**
+     * @param contVehiculos the contVehiculos to set
+     */
+    protected void setContVehiculos(int contVehiculos) {
+        this.contVehiculos = contVehiculos;
     }
 }
