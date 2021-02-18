@@ -1,12 +1,15 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Referencias utilizadas
+ * Array de Obetjos: https://www.discoduroderoer.es/arrays-de-objetos-en-java/
  */
 package prog06_ejerc1;
 
+import prog06_ejerc1_util.Metodos;
+
+
+
 /**
- *
+ * La clase concesionario se encarga de las tareas de 
  * @author Administrador
  */
 public class Concesionario {
@@ -14,11 +17,16 @@ public class Concesionario {
    
 
     //Definicion de atributos de la clase
+    
+    
     static final int MAXVEHICULOS = 50;
     String estaVehiculo; //variable para devolver el vehiculo encontrado
     boolean kmActualizados; // variable para saber si se han actualizado los km
-    private int contVehiculos = 0; //variable para conocer el numero de vehiculos en el concesionario
+    static private int contVehiculos = 0; //variable para conocer el número de vehiculos en el concesionario
+    Vehiculo[] arrayCoches = new Vehiculo[MAXVEHICULOS]; //instanciamos un objeto de la clase Vehiculo en forma de array
 
+    
+    
     /**
      * Metodo para buscar un vehiculo Recibe como parámetro una matrícula,
      * buscar el vehículo en el concesionario y devuelve una cadena con los
@@ -36,14 +44,27 @@ public class Concesionario {
      * Metodo para insertar un vehiculo Recibe todos los datos de un vehículo y
      * trata de insertarlo en el concesionario.
      *
-     * @param
+     * @param marca
+     * @param matricula
+     * @param num_km
+     * @param dia
+     * @param mes
+     * @param ano
+     * @param descripcion
+     * @param nombre_propietario
+     * @param precio
+     * @param DeNI
      * @return estado Devuelve 0 si se hizo con éxito, -1 si el concesionario
      * esta lleno y -2 si la matrícula ya existe.
      */
     public int insertarVehiculo(String marca, String matricula, int num_km, String dia, String mes, String ano, String descripcion, double precio, String nombre_propietario, String DeNI) {
-
+        
         //logica para insertar el vehiculo o mostrar devolver error que luego podemos capturar
+        arrayCoches[contVehiculos] = new Vehiculo(marca, matricula, num_km, dia, mes, ano, descripcion, precio, nombre_propietario, DeNI);
+        contVehiculos = contVehiculos + 1;
+        //contVehiculos++;
         int estado = 0;
+        Metodos.mensajePausa();
         return estado;
     }
 
@@ -53,6 +74,19 @@ public class Concesionario {
      */
     public void listarVehiculos() {
         //Imprime todos los vehiculos
+        for (int i = 0; i < contVehiculos; i++) {
+            System.out.println(">>Vehiculo número:" + i);
+            System.out.println("----------------------");
+            System.out.println("Marca: "+ arrayCoches[i].getMarca());
+            System.out.println("Matrícula: "+ arrayCoches[i].getMatricula());
+            System.out.println("Precio: "+ arrayCoches[i].getPrecio()+" €");
+            System.out.println("Kilómetros: "+ arrayCoches[i].getNum_km());
+            System.out.println("Descripción: "+ arrayCoches[i].getDescripcion());
+            System.out.println("----------------------");
+        }
+        
+      
+        
     }
 
     /**
@@ -79,10 +113,5 @@ public class Concesionario {
         return contVehiculos;
     }
 
-    /**
-     * @param contVehiculos the contVehiculos to set
-     */
-    protected void setContVehiculos(int contVehiculos) {
-        this.contVehiculos = contVehiculos;
-    }
+    
 }

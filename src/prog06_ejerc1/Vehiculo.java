@@ -55,7 +55,6 @@ public class Vehiculo {
     * 
     */
     
-    
     public Vehiculo(String marca, String matricula, int num_km, String dia, String mes, String ano, String descripcion, double precio, String nombre_propietario, String DNI) {
         this.marca = marca;
         this.matricula = matricula;

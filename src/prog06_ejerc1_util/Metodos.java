@@ -5,10 +5,13 @@
  */
 package prog06_ejerc1_util;
 
+
 import java.time.*;
 import java.util.Date;
+import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
 
 /**
  * La clase Metodos contiene los metodos funcionales necesarios para validad los
@@ -17,19 +20,32 @@ import java.util.regex.Pattern;
  * @author Sergio Soriano
  */
 public class Metodos {//Clase publica para poder acceder dese otro paquete
-
+    static Scanner teclado = new Scanner(System.in);
     /**
      * Muestra el menu con las opciones disponibles
      *
      */
     public static void mostrarMenu() {
         //Muestra el menu 
-        System.out.println("Bienvenido, selecciona una opcion del 1 al 9.");
+        System.out.println("************************************************");
+        System.out.println("Bienvenido, selecciona una opcion del 1 al 5:");
         System.out.println("1. Nuevo Vehiculo");
         System.out.println("2. Listar Vehiculos");
         System.out.println("3. Buscar Vehiculo");
         System.out.println("4. Modificar Kms de vehiculo");
         System.out.println("5. Salir");
+        System.out.println("************************************************");
+    }
+    /**
+     * Metodo está tico para hacer una pausa y presionar enter
+     * 
+     */
+    public static void mensajePausa() {
+        System.out.println("Presiona intro para volver al menu.................");
+        teclado.nextLine();
+        for(int i = 0; i < 10; i++){ // Default Height of cmd is 300 and Default width is 80
+            System.out.print("\n"); // Prints a backspace
+        }
     }
 
     /**

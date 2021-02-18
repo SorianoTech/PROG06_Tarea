@@ -22,9 +22,12 @@ Mejoras para Unidadad 6
 #010 - Añadir lógica para buscarVehiculo()
 #011 - Añadir lógica para listarVehiculos()
 #012 - Añadir lógica para actualizarKms()
+#013 - Validar que le propietario tiene un nombre y apellido con un max de 40 caracteres.
+
  */
 package prog06_ejerc1;
 
+import java.util.InputMismatchException;
 import prog06_ejerc1_util.DNI;
 import java.util.Scanner;
 import prog06_ejerc1_util.Metodos;
@@ -61,7 +64,8 @@ public class Principal {
         String nombre_propietario;
         int opcion;
         Scanner teclado = new Scanner(System.in);
-        Concesionario mi_coche = null; //Inicializamos mi_coche a null;
+        //Vehiculo mi_coche[] = null; //Inicializamos mi_coche a null;
+        Concesionario concesionarioObj = new Concesionario();
         String fecha = ""; //para almacenar la fecha en un string
         
            
@@ -75,7 +79,18 @@ public class Principal {
             try {
                 switch (opcion) {
                     case 1:
-                        //Pedir valores por pantalla     
+                        //Pedir valores por pantalla 
+                        marca= "Opel";
+                        matricula = "9167";
+                        num_km=1000;
+                        dia="10";
+                        mes="2";
+                        ano="2000";
+                        descripcion="nueva des";
+                        precio=1000;
+                        nombre_propietario="Pepe";
+                        DeNI="53499944N";
+                        /*
                         System.out.println("Introduce la Marca: ");
                         marca = teclado.nextLine();
                         System.out.println("Introduce la Matricula: ");
@@ -104,7 +119,7 @@ public class Principal {
                                 System.out.println("DNI Invalido, introduce uno valido");
                             }
                         } while (!DNI.validarNIF(DeNI));
-                        //Fin pedir valores por pantalla
+                        //Fin pedir valores por pantalla*/
                         
                         //Añade un 0 si se introduce el dia en formato individual.
                         int diaNumero = Integer.parseInt(dia);
@@ -117,10 +132,12 @@ public class Principal {
                         }
                         fecha = ano + "-" + mes + "-" + dia;//metemos los valores en una variable para pasarsela al metodo getAnios
                         //Código para crear el vehículo
-                        //mi_coche = new insertarVehiculo(marca, matricula, num_km, dia, mes, ano, descripcion, precio, nombre_propietario, DeNI);
+                        concesionarioObj.insertarVehiculo(marca, matricula, num_km, dia, mes, ano, descripcion, precio, nombre_propietario, DeNI);
+                        //mi_coche[0] = new insertarVehiculo(marca, matricula, num_km, dia, mes, ano, descripcion, precio, nombre_propietario, DeNI);
                         break;
                     case 2: //Opcion para mostrar todos los vehiculos
-                        //mi_coche.listarVehiculos();
+                        concesionarioObj.listarVehiculos();
+                        Metodos.mensajePausa();
                         break;
                     case 3: //Opcion para buscar vehiculo
                         //mi_coche.buscarVehiculo(matricula);
@@ -128,7 +145,7 @@ public class Principal {
                     case 4: //Opción para modificar los KM de un vehiculo.
                         //Actualizar KM
                         if (num_km != 0) {
-                            System.out.println("¿Cuántos Kilometros quieres añaidr?");
+                            System.out.println("¿Cuántos Kilometros quieres añadir?");
                             mas_km = teclado.nextInt();
                             teclado.nextLine();
                             //mi_coche.setNum_km(mas_km);
@@ -139,14 +156,14 @@ public class Principal {
                         break;
                     
                 }
-            } catch (NullPointerException e) {//Captura si no se ha creado el objeto 
+            } catch (InputMismatchException e) {//Captura si no se ha creado el objeto 
                 //mensaje de error para indicar que no existen vehículos creados
-                System.out.println("No existe ningun vehiculo creado");
-                System.out.println("Presiona intro para volver al menu.................");
-                teclado.nextLine();
+                System.out.println("Dato erroneo");
+                Metodos.mensajePausa();
             }
         } while (opcion != 5);
     }
+
 
 
 }
