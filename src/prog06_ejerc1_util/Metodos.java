@@ -29,10 +29,10 @@ public class Metodos {//Clase publica para poder acceder dese otro paquete
         //Muestra el menu 
         System.out.println("************************************************");
         System.out.println("Bienvenido, selecciona una opcion del 1 al 5:");
-        System.out.println("1. Nuevo Vehiculo");
-        System.out.println("2. Listar Vehiculos");
-        System.out.println("3. Buscar Vehiculo");
-        System.out.println("4. Modificar Kms de vehiculo");
+        System.out.println("1. Nuevo Vehículo");
+        System.out.println("2. Listar Vehículos");
+        System.out.println("3. Buscar Vehículo");
+        System.out.println("4. Modificar Kms de vehículo");
         System.out.println("5. Salir");
         System.out.println("************************************************");
     }
@@ -43,8 +43,8 @@ public class Metodos {//Clase publica para poder acceder dese otro paquete
     public static void mensajePausa() {
         System.out.println("Presiona intro para volver al menu.................");
         teclado.nextLine();
-        for(int i = 0; i < 10; i++){ // Default Height of cmd is 300 and Default width is 80
-            System.out.print("\n"); // Prints a backspace
+        for(int i = 0; i < 10; i++){ // 
+            System.out.print("\n"); // Imprime espacios en blanco
         }
     }
 

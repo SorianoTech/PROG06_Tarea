@@ -4,6 +4,8 @@ En esta clase solo se debe utilizar la clase Concesionario
 Referencias utilizadas
 Array de objetos: https://javadesdecero.es/arrays/unidimensionales-multidimensionales/#24_Arrays_de_objetos
 
+Errores: Error al introducir una letra en el campo actualizarkm
+Solucion: se añade un teclado.nextLine(); para liberar el buffer
 
 ## Posibles mejoras
  - 1. Cambiar los datos de la fecha a int
@@ -63,13 +65,11 @@ public class Principal {
         String nombre_propietario;
         int opcion;
         Scanner teclado = new Scanner(System.in);
-        //Vehiculo mi_coche[] = null; //Inicializamos mi_coche a null;
         Concesionario concesionarioObj = new Concesionario();
         String fecha = ""; //para almacenar la fecha en un string
 
         do {
             Metodos.mostrarMenu(); //Extraemos el menu a un metodo
-
             opcion = teclado.nextInt();
             teclado.nextLine(); //Pedimos la opcion por teclado
 
@@ -181,9 +181,10 @@ public class Principal {
                         System.out.println("Opcion incorrecta...");
                 }
 
-            } catch (InputMismatchException e) {//Captura si no se ha creado el objeto 
-                //mensaje de error para indicar que no existen vehículos creados
+            } catch (InputMismatchException e) {//Captura si se introduce un valor no valido
+                
                 System.out.println("Dato erroneo");
+                teclado.nextLine();
                 Metodos.mensajePausa();
             }
         } while (opcion != 5);
