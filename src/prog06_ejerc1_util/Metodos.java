@@ -54,7 +54,7 @@ public class Metodos {//Clase publica para poder acceder dese otro paquete
      * @param dni
      * @return true si es correcto y false si no lo es
      */
-    public boolean dniRegex(String dni) {
+    public static boolean dniRegex(String dni) {
         Pattern patronDNI = Pattern.compile("[0-9]{7,8}[A-Z a-z]"); //Creamos el patron del DNI
         Matcher matcher = patronDNI.matcher(dni); // Se lo pasamos a la clase matcher
         boolean dniValido = matcher.matches(); // comprobamos si es correcto con el metodo matches()
@@ -67,7 +67,7 @@ public class Metodos {//Clase publica para poder acceder dese otro paquete
      * @param matricula
      * @return 
      */
-    public boolean formatoMatricula(String matricula) {
+    public static boolean formatoMatricula(String matricula) {
         Pattern patronMatricula = Pattern.compile("([0-9]{4})([A-Z]{3})");
         Matcher matcher = patronMatricula.matcher(matricula.toUpperCase()); //Le pasamos el patron pasandolo a mayusculas
         boolean matriculaValida = matcher.matches();

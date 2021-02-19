@@ -2,6 +2,7 @@
 /*
 En esta clase solo se debe utilizar la clase Concesionario
 Referencias utilizadas
+Array de objetos: https://javadesdecero.es/arrays/unidimensionales-multidimensionales/#24_Arrays_de_objetos
 
 
 ## Posibles mejoras
@@ -28,34 +29,32 @@ Mejoras para Unidadad 6
 package prog06_ejerc1;
 
 import java.util.InputMismatchException;
-import prog06_ejerc1_util.DNI;
 import java.util.Scanner;
 import prog06_ejerc1_util.Metodos;
 
-
 /**
- * Esta es la clase principal. Consiste en una aplicación para crear un concesionaro de vehiclos. 
- * Muestra un menu para añadir, modificar y buscar los vehiculos.
- * En esta clase se debe implementar :
- *  - Instanciar un objeto Concesionario.
- *  - Pintar el menú y solicitar datos por teclado al usuario.
- *  - Realizar las validaciones de datos de entrada.
- *  - Mostrar datos por pantalla
+ * Esta es la clase principal. Consiste en una aplicación para crear un
+ * concesionaro de vehiclos. Muestra un menu para añadir, modificar y buscar los
+ * vehiculos. En esta clase se debe implementar : - Instanciar un objeto
+ * Concesionario. - Pintar el menú y solicitar datos por teclado al usuario. -
+ * Realizar las validaciones de datos de entrada. - Mostrar datos por pantalla
  *
  * @author Sergio Soriano
  *
  */
 public class Principal {
+
     /**
      * @param args Devuelve el menu principal
      *
-    **/
+     *
+     */
     //Metodo principal main
-    public static void main(String[] args)  {
+    public static void main(String[] args) {
 
         String marca;
         String DeNI;
-        String matricula;
+        String matricula = "";
         int num_km = 0; //incializamos a 0 para poder validar
         int mas_km;
         String dia, mes, ano;
@@ -67,9 +66,7 @@ public class Principal {
         //Vehiculo mi_coche[] = null; //Inicializamos mi_coche a null;
         Concesionario concesionarioObj = new Concesionario();
         String fecha = ""; //para almacenar la fecha en un string
-        
-           
-            
+
         do {
             Metodos.mostrarMenu(); //Extraemos el menu a un metodo
 
@@ -80,21 +77,24 @@ public class Principal {
                 switch (opcion) {
                     case 1:
                         //Pedir valores por pantalla 
-                        marca= "Opel";
+                        marca = "Opel";
                         matricula = "9167";
-                        num_km=1000;
-                        dia="10";
-                        mes="2";
-                        ano="2000";
-                        descripcion="nueva des";
-                        precio=1000;
-                        nombre_propietario="Pepe";
-                        DeNI="53499944N";
+                        num_km = 1000;
+                        dia = "10";
+                        mes = "2";
+                        ano = "2000";
+                        descripcion = "nueva des";
+                        precio = 1000;
+                        nombre_propietario = "Pepe";
+                        DeNI = "53499944N";
+
+                        //System.out.println("Introduce la Marca: ");
+                        //marca = teclado.nextLine();
+                        do { // Bucle para comprobar que la matricula esta en formato correcto
+                            System.out.println("Introduce la Matricula: ");
+                            matricula = teclado.nextLine();
+                        } while (!Metodos.formatoMatricula(matricula));
                         /*
-                        System.out.println("Introduce la Marca: ");
-                        marca = teclado.nextLine();
-                        System.out.println("Introduce la Matricula: ");
-                        matricula = teclado.nextLine();
                         System.out.println("Introduce los Kilometros: ");
                         num_km = teclado.nextInt();
                         teclado.nextLine();
@@ -120,7 +120,7 @@ public class Principal {
                             }
                         } while (!DNI.validarNIF(DeNI));
                         //Fin pedir valores por pantalla*/
-                        
+
                         //Añade un 0 si se introduce el dia en formato individual.
                         int diaNumero = Integer.parseInt(dia);
                         int mesNumero = Integer.parseInt(mes);
@@ -132,30 +132,55 @@ public class Principal {
                         }
                         fecha = ano + "-" + mes + "-" + dia;//metemos los valores en una variable para pasarsela al metodo getAnios
                         //Código para crear el vehículo
-                        concesionarioObj.insertarVehiculo(marca, matricula, num_km, dia, mes, ano, descripcion, precio, nombre_propietario, DeNI);
-                        //mi_coche[0] = new insertarVehiculo(marca, matricula, num_km, dia, mes, ano, descripcion, precio, nombre_propietario, DeNI);
+                        int estado = concesionarioObj.insertarVehiculo(marca, matricula, num_km, dia, mes, ano, descripcion, precio, nombre_propietario, DeNI); // Capturamos la variable estado
+
+                        switch (estado) { //Imprimimos errores segun el valor de la variable estado.
+                            case -2:
+                                System.out.println("El vehiculo ya existe.... No se puede añadir....");
+                                break;
+                            case -1:
+                                System.out.println("El concesionario esta lleno.");
+                                break;
+                            default:
+                                System.out.println("Vehiculo añadido correctamente");
+                                break;
+                        }
+
                         break;
+
                     case 2: //Opcion para mostrar todos los vehiculos
                         concesionarioObj.listarVehiculos();
                         Metodos.mensajePausa();
                         break;
                     case 3: //Opcion para buscar vehiculo
-                        //mi_coche.buscarVehiculo(matricula);
-                        break;
-                    case 4: //Opción para modificar los KM de un vehiculo.
-                        //Actualizar KM
-                        if (num_km != 0) {
-                            System.out.println("¿Cuántos Kilometros quieres añadir?");
-                            mas_km = teclado.nextInt();
-                            teclado.nextLine();
-                            //mi_coche.setNum_km(mas_km);
-                            //System.out.println("El coche ahora tiene " + mi_coche.getNum_km());
+                        System.out.println("Introduce la matricula del vehiculo que quieres buscar");
+                        matricula = teclado.nextLine();
+                        if (concesionarioObj.buscarVehiculo(matricula) == null) { //Si el valor recibido es null imprimo un mensaje
+                            System.out.println("Vehiculo no Encontrado!");
+                            Metodos.mensajePausa();
+
                         } else {
-                            System.out.println("!!!!!!!!!!Primero debes crear un Vehiculo");
+                            System.out.println(concesionarioObj.buscarVehiculo(matricula)); // Imprimo el String que me devuelve del coche
+                            Metodos.mensajePausa();
                         }
                         break;
-                    
+                    case 4: //Opción para actualizar los KM de un vehiculo.
+                        //Actualizar KM
+                        System.out.println("¿Introduce la matricula del vehiculo?");
+                        String buscaMatricula = teclado.nextLine();
+                        System.out.println("¿Cuántos Kilometros quieres añadir?");
+                        mas_km = teclado.nextInt();
+                        teclado.nextLine();
+                        if (concesionarioObj.actualizarKms(buscaMatricula, mas_km)) {//Comprobamos si existe el vehiculo devuleve true si esa asi
+                            System.out.println("Kilometros actualizados");
+                        } else {//Si no esta la matricula imprime un error
+                            System.out.println("Error... matricula no encontrada");
+                        }
+                        break;
+                    default:
+                        System.out.println("Opcion incorrecta...");
                 }
+
             } catch (InputMismatchException e) {//Captura si no se ha creado el objeto 
                 //mensaje de error para indicar que no existen vehículos creados
                 System.out.println("Dato erroneo");
@@ -163,7 +188,5 @@ public class Principal {
             }
         } while (opcion != 5);
     }
-
-
 
 }
