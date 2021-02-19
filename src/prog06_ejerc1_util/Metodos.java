@@ -38,7 +38,7 @@ public class Metodos {//Clase publica para poder acceder dese otro paquete
     }
 
     /**
-     * Metodo está tico para hacer una pausa y presionar enter
+     * Método estático para hacer una pausa y presionar enter
      *
      */
     public static void mensajePausa() {
@@ -50,7 +50,7 @@ public class Metodos {//Clase publica para poder acceder dese otro paquete
     }
 
     /**
-     * Metodo para comprobar el patron del DNI, solo el formato
+     * Método para comprobar el patron del DNI, solo el formato
      *
      * @param dni
      * @return true si es correcto y false si no lo es
@@ -63,10 +63,10 @@ public class Metodos {//Clase publica para poder acceder dese otro paquete
     }
 
     /**
-     * Meotodo para comprobar el formato de la matricula
+     * Método para comprobar el formato de la matricula
      *
      * @param matricula
-     * @return
+     * @return verdadero si la matricula es válida
      */
     public static boolean formatoMatricula(String matricula) {
         Pattern patronMatricula = Pattern.compile("([0-9]{4})([A-Z]{3})");
@@ -80,7 +80,12 @@ public class Metodos {//Clase publica para poder acceder dese otro paquete
             return false;
         }
     }
-
+    /**
+     * Meteodo para comprobar el nombre del propietario
+     * @param nombre
+     * @return verdadero si el nombre tiene 3 o mas espacios y menos de 40 carácteres
+     */
+    
     public static boolean validarNombre(String nombre) {
         //definimos variables para conocer la cantidad espacios y caracteres
         int cantidadEspacios = nombre.split("\\s+|\n|,").length;

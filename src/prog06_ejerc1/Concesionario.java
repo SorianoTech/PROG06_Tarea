@@ -96,7 +96,7 @@ public class Concesionario {
 
     /**
      * Meotod void para imprimir todos los valore de un vehiculo al ser
-     * encontrado (sin string utilizado en listarVehiculos())
+     * encontrado (sin string, es utilizado en listarVehiculos())
      *
      * @param i posición de la array del coche
      */
