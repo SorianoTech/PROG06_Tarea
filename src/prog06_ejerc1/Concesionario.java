@@ -52,8 +52,8 @@ public class Concesionario {
             } else if (contVehiculos == 50) {
                 estado = -1;
             }
-            
-        }else{
+
+        } else {
             estado = -2; //El vehiculo existe
         }
         return estado;
@@ -143,9 +143,9 @@ public class Concesionario {
         for (int i = 0; i < contVehiculos; i++) {
             if (matricula.equals(arrayCoches[i].getMatricula())) { //comparo el string                
                 arrayCoches[i].setNum_km(kilometros);
-                kmActualizados =true;
+                kmActualizados = true;
                 return kmActualizados;
-            } 
+            }
         }
         return kmActualizados;
     }

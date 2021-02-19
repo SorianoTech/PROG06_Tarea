@@ -27,6 +27,9 @@ Mejoras para Unidadad 6
 #012 - Añadir lógica para actualizarKms()
 #013 - Validar que le propietario tiene un nombre y apellido con un max de 40 caracteres.
 
+Error
+#014 - Error al introducir una letra en el campo actualizarkm
+
  */
 package prog06_ejerc1;
 
@@ -109,17 +112,12 @@ public class Principal {
                         System.out.println("Introduce el precio: ");
                         precio = teclado.nextInt();
                         teclado.nextLine();
-                        System.out.println("Introduce el propietario: ");
-                        nombre_propietario = teclado.nextLine();
-
-                        do {//Validamos el documento de identidad
-                            System.out.println("Introduce el  DNI: ");
-                            DeNI = teclado.nextLine();
-                            if (!DNI.validarNIF(DeNI)) {
-                                System.out.println("DNI Invalido, introduce uno valido");
-                            }
-                        } while (!DNI.validarNIF(DeNI));
-                        //Fin pedir valores por pantalla*/
+                        */
+                        do{ //Pedimos el nombre hasta que tenga 3 elementos separados por algun espacio
+                            System.out.println("Introduce el propietario: ");
+                            nombre_propietario = teclado.nextLine();
+                        } while(!Metodos.validarNombre(nombre_propietario));
+                        
 
                         //Añade un 0 si se introduce el dia en formato individual.
                         int diaNumero = Integer.parseInt(dia);

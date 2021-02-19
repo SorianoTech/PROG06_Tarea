@@ -4,8 +4,6 @@ package prog06_ejerc1;
 import java.time.LocalDate;
 import java.time.Period;
 
-
-
 /**
  * La clase vehiculo permite generar un vehiculo nuevo
  *
@@ -39,20 +37,16 @@ public class Vehiculo {
     private String DNI;
 
     /**
-    *Constructor de la clase vehiculo 
-    @param  marca asigna la marca
-    @param  matricula asgina la matricula
-    @param  num_kum asgina el numero de kilometros
-    @param  dia asigna el dia de matriculacion en formato string
-    @param  mes asgina el mes en formato string
-    @param  ano asgina el año en formato string
-    @param  descripcion asgna la descripcion del vehiculo
-    @param  precio asigna el precio
-    @param  nombre_propietario asigna el nombre del propietario
-   
-    * 
-    
-    * 
+    * Constructor de la clase vehiculo 
+    * @param  marca asigna la marca
+    * @param  matricula asgina la matricula
+    * @param  num_kum asgina el numero de kilometros
+    * @param  dia asigna el dia de matriculacion en formato string
+    * @param  mes asgina el mes en formato string
+    * @param  ano asgina el año en formato string
+    * @param  descripcion asgna la descripcion del vehiculo
+    * @param  precio asigna el precio
+    * @param  nombre_propietario asigna el nombre del propietario
     */
     
     public Vehiculo(String marca, String matricula, int num_km, String dia, String mes, String ano, String descripcion, double precio, String nombre_propietario, String DNI) {

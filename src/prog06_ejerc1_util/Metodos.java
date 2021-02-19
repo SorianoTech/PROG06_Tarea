@@ -5,13 +5,11 @@
  */
 package prog06_ejerc1_util;
 
-
 import java.time.*;
 import java.util.Date;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
 
 /**
  * La clase Metodos contiene los metodos funcionales necesarios para validad los
@@ -20,7 +18,9 @@ import java.util.regex.Pattern;
  * @author Sergio Soriano
  */
 public class Metodos {//Clase publica para poder acceder dese otro paquete
+
     static Scanner teclado = new Scanner(System.in);
+
     /**
      * Muestra el menu con las opciones disponibles
      *
@@ -36,14 +36,15 @@ public class Metodos {//Clase publica para poder acceder dese otro paquete
         System.out.println("5. Salir");
         System.out.println("************************************************");
     }
+
     /**
      * Metodo está tico para hacer una pausa y presionar enter
-     * 
+     *
      */
     public static void mensajePausa() {
         System.out.println("Presiona intro para volver al menu.................");
         teclado.nextLine();
-        for(int i = 0; i < 10; i++){ // 
+        for (int i = 0; i < 10; i++) { // 
             System.out.print("\n"); // Imprime espacios en blanco
         }
     }
@@ -55,17 +56,17 @@ public class Metodos {//Clase publica para poder acceder dese otro paquete
      * @return true si es correcto y false si no lo es
      */
     public static boolean dniRegex(String dni) {
-        Pattern patronDNI = Pattern.compile("[0-9]{7,8}[A-Z a-z]"); //Creamos el patron del DNI
+        Pattern patronDNI = Pattern.compile("([XY]?)([0-9]{1,9})([A-Za-z])"); //Creamos el patron del DNI
         Matcher matcher = patronDNI.matcher(dni); // Se lo pasamos a la clase matcher
         boolean dniValido = matcher.matches(); // comprobamos si es correcto con el metodo matches()
         return dniValido; //devolvemos true o false
-
     }
 
     /**
      * Meotodo para comprobar el formato de la matricula
+     *
      * @param matricula
-     * @return 
+     * @return
      */
     public static boolean formatoMatricula(String matricula) {
         Pattern patronMatricula = Pattern.compile("([0-9]{4})([A-Z]{3})");
@@ -78,6 +79,19 @@ public class Metodos {//Clase publica para poder acceder dese otro paquete
             System.out.println("Matrícula inválida");
             return false;
         }
+    }
+
+    public static boolean validarNombre(String nombre) {
+        //definimos variables para conocer la cantidad espacios y caracteres
+        int cantidadEspacios = nombre.split("\\s+|\n|,").length;
+        int cantidadCaracteres =nombre.length();
+        if (cantidadEspacios >= 3 && cantidadCaracteres<40) { //Evaluamos si cumple con la condición
+            return true;
+        } else {
+            System.out.println("Nombre incorrecto, por favor introduzca nombre y dos apellidos.");
+            return false;
+        }
+
     }
 
 }
