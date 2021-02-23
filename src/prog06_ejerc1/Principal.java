@@ -89,7 +89,7 @@ public class Principal {
                         descripcion = "nueva des";
                         precio = 1000;
                         nombre_propietario = "Pepe";
-                        DeNI = "53499944N";
+                        DeNI = "0000000N";
 
                         //System.out.println("Introduce la Marca: ");
                         //marca = teclado.nextLine();
